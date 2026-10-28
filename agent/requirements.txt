@@ -1,0 +1,5 @@
+azure-ai-projects==2.8.0
+azure-ai-agentserver-optimization==1.0.0b1
+azure-ai-agentserver-responses==2.3.0
+azure-identity==1.26.0
+pydantic==2.14.0

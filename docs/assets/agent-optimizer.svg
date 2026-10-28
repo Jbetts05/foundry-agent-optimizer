@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Turn agent instructions into an experiment.</title>
+  <desc id="description">Microsoft Foundry Agent Optimizer takes your hosted agent, development examples, and evaluation criteria. It generates candidate instructions, evaluates their responses, and uses feedback to guide its search. Inspect the best-scoring candidate before applying and deploying it. Moving signals and candidate highlights illustrate the process, not measured results. Reduced-motion preferences disable animation.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" stroke="#1b3046" stroke-opacity=".45"/>
+    </pattern>
+    <linearGradient id="wash" x1="0" y1="0" x2="1200" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10263b"/>
+      <stop offset="1" stop-color="#080f1c"/>
+    </linearGradient>
+    <style>
+      text { font-family: Inter, "Segoe UI", Arial, sans-serif; fill: #edf5fc; }
+      .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; fill: #8da6bf; }
+      .heading { font-size: 42px; font-weight: 700; letter-spacing: -1.5px; }
+      .muted { font-size: 16px; fill: #a7bdd2; }
+      .label { font-size: 18px; font-weight: 600; }
+      .small { font-size: 13px; fill: #a7bdd2; }
+      .mono { font-family: Consolas, "Liberation Mono", monospace; font-size: 13px; }
+      .cyan { fill: #57d9f5; }
+      .amber { fill: #ffcc70; }
+      .card { fill: #0e1b2c; stroke: #2a4057; }
+      .track { stroke: #324c65; stroke-width: 2; }
+      .signal { stroke: #57d9f5; stroke-width: 2.5; stroke-dasharray: 6 24; animation: flow 2s linear infinite; }
+      .feedback { stroke: #ffcc70; }
+      .halo { stroke: #57d9f5; stroke-width: 1.5; animation: breathe 5s ease-in-out infinite; }
+      .candidate { animation: consider 9s ease-in-out infinite; }
+      .candidate-b { animation-delay: 3s; }
+      .candidate-c { animation-delay: 6s; }
+      .spark { animation: breathe 3s ease-in-out infinite; }
+      .orbit { transform-origin: 495px 276px; animation: orbit 18s linear infinite; }
+      @keyframes flow { to { stroke-dashoffset: -60; } }
+      @keyframes breathe { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+      @keyframes consider { 0%, 38%, 100% { stroke: #2a4057; } 12%, 28% { stroke: #57d9f5; } }
+      @keyframes orbit { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .signal, .halo, .candidate, .spark, .orbit { animation: none; }
+      }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1198" height="538" rx="20" fill="url(#wash)" stroke="#2a4057"/>
+  <rect x="2" y="2" width="1196" height="536" rx="19" fill="url(#grid)"/>
+  <circle cx="47" cy="43" r="5" fill="#57d9f5" class="spark"/>
+  <text x="64" y="48" class="eyebrow">MICROSOFT FOUNDRY / AGENT OPTIMIZER</text>
+  <text x="40" y="108" class="heading">Turn agent instructions into an experiment.</text>
+  <text x="40" y="142" class="muted">Generate alternatives. Measure what matters. Let evaluation guide the search.</text>
+
+  <!-- Inputs stay fixed while candidate instructions change. -->
+  <rect x="40" y="186" width="248" height="205" rx="12" class="card"/>
+  <text x="60" y="217" class="eyebrow">YOU BRING THE CONTEXT</text>
+  <path d="M60 247h15m-15 6h11m-11 6h15" stroke="#57d9f5" stroke-width="2"/>
+  <text x="88" y="258" class="label">Your hosted agent</text>
+  <text x="60" y="282" class="small">Instructions + existing tools</text>
+  <path d="M60 303h15m-15 6h15m-15 6h15" stroke="#57d9f5" stroke-width="2"/>
+  <text x="88" y="315" class="label">Development cases</text>
+  <path d="m60 344 5 5 10-12" stroke="#ffcc70" stroke-width="2"/>
+  <text x="88" y="349" class="label">Evaluation criteria</text>
+  <text x="60" y="375" class="small">Define what a good answer means.</text>
+
+  <path d="M288 276H366" class="track"/>
+  <path d="M288 276H366" class="signal"/>
+  <path d="m356 270 9 6-9 6" stroke="#57d9f5" stroke-width="1.5"/>
+  <rect x="366" y="186" width="258" height="205" rx="12" class="card"/>
+  <rect x="366" y="186" width="258" height="205" rx="12" class="halo"/>
+  <text x="386" y="217" class="eyebrow">SEARCH, NOT GUESSWORK</text>
+  <circle cx="495" cy="276" r="35" stroke="#27475e"/>
+  <circle cx="495" cy="276" r="25" stroke="#57d9f5" stroke-dasharray="18 8" class="orbit"/>
+  <path d="m495 261 4 11 11 4-11 4-4 11-4-11-11-4 11-4Z" fill="#57d9f5"/>
+  <circle cx="495" cy="241" r="4" fill="#ffcc70" class="orbit"/>
+  <text x="495" y="341" text-anchor="middle" class="label">Agent Optimizer</text>
+  <text x="495" y="369" text-anchor="middle" class="small">Generate candidate instructions</text>
+
+  <path d="M624 276H648V221H674M648 276H674M648 276V331H674" class="track"/>
+  <path d="M624 276H648V221H674M648 276H674M648 276V331H674" class="signal"/>
+  <text x="674" y="198" class="eyebrow">EXPLORE ALTERNATIVES</text>
+  <rect x="674" y="207" width="181" height="40" rx="8" class="card candidate"/>
+  <text x="690" y="232" class="mono cyan">instructions / A</text>
+  <rect x="674" y="262" width="181" height="40" rx="8" class="card candidate candidate-b"/>
+  <text x="690" y="287" class="mono cyan">instructions / B</text>
+  <rect x="674" y="317" width="181" height="40" rx="8" class="card candidate candidate-c"/>
+  <text x="690" y="342" class="mono cyan">instructions / C</text>
+  <text x="674" y="381" class="small">Same agent. Different instructions.</text>
+
+  <path d="M855 227H875V282H900M855 282H900M855 337H875V282" class="track"/>
+  <path d="M855 227H875V282H900M855 282H900M855 337H875V282" class="signal"/>
+  <rect x="900" y="207" width="260" height="184" rx="12" class="card"/>
+  <text x="920" y="238" class="eyebrow">EVALUATE RESPONSES</text>
+  <text x="920" y="272" class="label">Run your examples.</text>
+  <text x="920" y="300" class="label">Score your criteria.</text>
+  <path d="m922 328 5 5 10-12" stroke="#ffcc70" stroke-width="2"/>
+  <text x="946" y="333" class="small amber">Inspect the best-scoring candidate</text>
+  <text x="920" y="371" class="small">Review before applying + deploying.</text>
+
+  <!-- Evaluation feedback returns to the instruction search. -->
+  <path d="M1030 391V430H495V391" class="track"/>
+  <path d="M1030 391V430H495V391" class="signal feedback"/>
+  <path d="m489 401 6-9 6 9" stroke="#ffcc70" stroke-width="1.5"/>
+  <rect x="640" y="418" width="271" height="24" rx="6" fill="#0c1929"/>
+  <text x="775" y="435" text-anchor="middle" class="mono amber">EVALUATION FEEDBACK GUIDES SEARCH</text>
+
+  <path d="M40 468H1160" stroke="#2a4057"/>
+  <text x="40" y="498" class="muted">Less prompt guesswork. More evidence.</text>
+  <text x="40" y="522" class="small">Illustrative workflow. Improvement depends on your baseline, examples, and evaluator.</text>
+</svg>

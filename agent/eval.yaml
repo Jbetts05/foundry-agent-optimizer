@@ -1,0 +1,14 @@
+name: promotion-policy-development
+agent:
+  name: promotion-policy
+  kind: hosted
+  model: gpt-4.1-mini
+  config: .agent_configs/baseline/metadata.yaml
+dataset:
+  local_uri: evaluation/development.jsonl
+evaluators:
+  - builtin.task_adherence
+options:
+  eval_model: gpt-4.1-mini
+  optimization_model: gpt-5.4
+  max_candidates: 2

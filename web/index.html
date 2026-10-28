@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Promotion Policy · Agent Optimizer</title>
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="wordmark"><span class="mark" aria-hidden="true"></span>Agent Optimizer</div>
+      <span class="header-note">One agent · two versions</span>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="title">
+        <h1 id="title">Same policy. Better decisions?</h1>
+        <p>Run the agent. Optimize its instructions. Compare the results.</p>
+        <p id="provenance" hidden></p>
+        <details class="inspect" id="source-details" hidden>
+          <summary>Deployed version provenance</summary><pre id="source-output"></pre>
+        </details>
+      </section>
+      <form id="request-form">
+        <label class="muted-label" for="case">Choose a promotion</label>
+        <select id="case" disabled><option>Loading cases…</option></select>
+        <h2>Should we approve this promotion?</h2>
+        <div class="labels" aria-label="Possible decisions">
+          <span class="chip">Approve</span><span class="chip">Reject</span>
+          <span class="chip">Escalate</span><span class="chip">Clarify</span>
+        </div>
+        <label class="muted-label" for="request">Request</label>
+        <textarea id="request" maxlength="6000" required disabled rows="3"></textarea>
+        <div class="actions">
+          <button id="run" type="submit" disabled>Run comparison ↗</button>
+          <button id="evaluate" class="secondary" type="button" disabled>Measure all cases</button>
+          <span id="request-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-heading">
+          <h2 id="results-title">Agent responses</h2>
+          <span id="model-name"></span>
+        </div>
+        <div class="cards">
+          <article class="card" id="v1-card" aria-labelledby="v1-title">
+            <div class="card-top"><h3 id="v1-title">Agent V1</h3><span class="version" id="v1-version">Baseline</span></div>
+            <p class="answer waiting" id="v1-answer">Ready to review</p>
+            <p class="reason" id="v1-reason"></p>
+            <div class="checks" id="v1-checks"></div>
+            <dl class="metrics" id="v1-metrics"></dl>
+            <details class="inspect" id="v1-inspect" hidden>
+              <summary>Context · tools · output</summary>
+              <div id="v1-detail"></div>
+            </details>
+          </article>
+          <article class="card" id="v2-card" aria-labelledby="v2-title">
+            <div class="card-top"><h3 id="v2-title">Agent V2</h3><span class="version" id="v2-version">Optimized</span></div>
+            <p class="answer waiting" id="v2-answer">Optimize to create V2</p>
+            <p class="reason" id="v2-reason"></p>
+            <div class="checks" id="v2-checks"></div>
+            <dl class="metrics" id="v2-metrics"></dl>
+            <details class="inspect" id="v2-inspect" hidden>
+              <summary>Context · tools · output</summary>
+              <div id="v2-detail"></div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="optimizer" aria-labelledby="optimizer-title">
+        <div class="section-heading">
+          <h2 id="optimizer-title">Improve the instructions</h2>
+          <span>Foundry Agent Optimizer</span>
+        </div>
+        <div class="optimizer-panel">
+          <div class="optimizer-heading">
+            <div><h3>From V1 to V2</h3><p id="optimizer-status" role="status" aria-live="polite">Generate and evaluate two candidate configurations.</p></div>
+            <button id="optimize" type="button" disabled>Optimize agent ↗</button>
+          </div>
+          <div id="optimizer-progress" class="progress" hidden><span></span></div>
+          <div id="candidates" class="candidates"></div>
+          <details class="inspect" id="changes" hidden>
+            <summary>Review instruction changes</summary>
+            <div class="diff-grid">
+              <div><h4>Baseline</h4><pre id="before"></pre></div>
+              <div><h4>Candidate</h4><pre id="after"></pre></div>
+            </div>
+          </details>
+          <div class="actions" id="apply-actions" hidden>
+            <button id="apply" type="button">Use this candidate ↗</button>
+            <span id="apply-status" role="status" aria-live="polite"></span>
+          </div>
+          <details class="inspect" id="job-details" hidden>
+            <summary>Run details</summary><pre id="job-output"></pre>
+          </details>
+        </div>
+      </section>
+
+      <section id="evaluation" class="evaluation" hidden aria-labelledby="evaluation-title">
+        <div class="section-heading"><h2 id="evaluation-title">Across the cases</h2><span id="evaluation-status" role="status" aria-live="polite"></span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Promotion</th><th>Expected</th><th>V1 decision</th><th>V1 checks</th><th>V2 decision</th><th>V2 checks</th></tr></thead>
+            <tbody id="evaluation-rows"></tbody>
+            <tfoot id="evaluation-totals"></tfoot>
+          </table>
+        </div>
+      </section>
+      <noscript>JavaScript is required to run the comparison.</noscript>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "purpose": "Deliberately weak synthetic starter prompts for a separate, disclosed optimization experiment.",
+  "status": "Underspecified is deployed as a separate synthetic experiment, not the original hosted V1. Other profiles remain local-only. Local measurements and Agent Optimizer results are recorded separately.",
+  "deployed": true,
+  "deployment": {
+    "profile": "underspecified",
+    "azd_service": "promotion-policy-experiment"
+  },
+  "selected_profile": "underspecified",
+  "hosted_optimization": {
+    "job_id": "opt_d7ab515d2f484fb082b6bd5c5a922046",
+    "status": "succeeded",
+    "development_cases": 12,
+    "baseline_all_checks_passed": 5,
+    "best_all_checks_passed": 8,
+    "completed_generated_candidates": 2,
+    "candidate_applied": false,
+    "holdout_evaluated": false,
+    "review_issue": "Both generated candidates double-apply the DE cap reduction already performed by the lookup tool.",
+    "results_file": ".azure/weak-optimization-pinned-image.json"
+  },
+  "measurements": {
+    "execution": "local-agent-code-live-model",
+    "rounds": 2,
+    "scored_trials": 160,
+    "results_file": "agent/.foundry/results/prompt-sweep-recovered.json",
+    "confirmation": {
+      "profile": "underspecified",
+      "rounds": 1,
+      "scored_trials": 20,
+      "challenge_all_checks_passed": 5,
+      "challenge_cases": 12,
+      "results_file": "agent/.foundry/results/prompt-sweep-confirmation.json"
+    }
+  },
+  "keep_fixed": ["model", "business policy", "tools", "output schema"],
+  "profiles": [
+    {
+      "id": "underspecified",
+      "instructions": "You are a helpful sales assistant. Review proposed promotions and give a short recommendation in the required output format.",
+      "deliberate_weakness": "No review sequence, input-completeness check, or explicit guidance for using tools.",
+      "hypothesis": "More explicit workflow instructions may improve handling of missing inputs, stale figures and numerical boundaries."
+    },
+    {
+      "id": "speed-first",
+      "instructions": "Review each promotion as quickly as possible. Prefer mental arithmetic and avoid calling tools for straightforward requests. Keep the explanation to a single sentence.",
+      "deliberate_weakness": "The tool-skipping preference is intentionally flawed and conflicts with the fixed policy's lookup requirement.",
+      "hypothesis": "The optimizer may remove the shortcut and reinforce actual tool execution, exact arithmetic and rounding order."
+    },
+    {
+      "id": "approval-biased",
+      "instructions": "Act as a commercial deal desk. Help the salesperson get a promotion approved. If information is incomplete, make reasonable assumptions and give a concise recommendation in the required format.",
+      "deliberate_weakness": "The assumption-making preference is intentionally flawed and conflicts with the fixed policy's prohibition on invented inputs.",
+      "hypothesis": "The optimizer may replace approval bias with policy precedence, explicit clarification and faithful calculator inputs."
+    }
+  ]
+}

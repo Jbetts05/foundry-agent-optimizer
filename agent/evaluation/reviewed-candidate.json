@@ -1,0 +1,23 @@
+{
+  "job_id": "opt_d7ab515d2f484fb082b6bd5c5a922046",
+  "candidate_id": "cand_opt_d7ab515d2f484fb082b6bd5c5a922046_0002",
+  "baseline_score": 0.4166666666666667,
+  "optimizer_score": 0.6666666666666666,
+  "original_instructions_sha256": "7d117192ee0e064d0e41ec1654107574b465cc81736c9b132a38e1e04319ecb8",
+  "reviewed_instructions_sha256": "8b5a1376aab2909a878892e8bbdc6b13c5771be65eacf449ff6218bef6035788",
+  "manual_changes": [
+    {
+      "before": "4. In region DE, reduce the looked-up discount cap by 5 percentage points yourself. This adjusted value is the applicable cap to report and enforce.",
+      "after": "4. The lookup tool already applies the regional adjustment, including the 5-point reduction for DE. Use its returned discount_cap_percent unchanged; never subtract it again."
+    },
+    {
+      "before": "- In DE, report the reduced cap after subtracting 5 points.",
+      "after": "- In DE, report the region-adjusted cap returned by the lookup tool without subtracting again."
+    },
+    {
+      "before": "- \"Requested discount 12% exceeds DE cap 5%\"",
+      "after": "- \"Requested discount 12% exceeds the returned DE cap 10%\""
+    }
+  ],
+  "holdout_used_for_repair": false
+}

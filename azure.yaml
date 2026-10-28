@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+requiredVersions:
+    azd: '>=1.27.1'
+name: promotion-policy-optimizer
+services:
+    ai-project:
+        host: azure.ai.project
+        deployments:
+            - model:
+                format: OpenAI
+                name: gpt-4.1-mini
+                version: "2025-04-14"
+              name: gpt-4.1-mini
+              sku:
+                capacity: 50
+                name: GlobalStandard
+            - model:
+                format: OpenAI
+                name: gpt-5.4
+                version: "2026-03-05"
+              name: gpt-5.4
+              sku:
+                capacity: 50
+                name: GlobalStandard
+    promotion-policy:
+        project: ./agent
+        host: azure.ai.agent
+        language: python
+        uses:
+            - ai-project
+        env:
+            AZURE_AI_MODEL_DEPLOYMENT_NAME: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+            OPTIMIZATION_LOCAL_DIR: .agent_configs
+        codeConfiguration:
+            dependencyResolution: remote_build
+            entryPoint: main.py
+            runtime: python_3_13
+        container:
+            resources:
+                cpu: "1"
+                memory: 2Gi
+        description: Review promotion eligibility, regional discount limits, and projected margin.
+        displayName: Contoso Promotion Policy
+        kind: hosted
+        name: promotion-policy
+        protocols:
+            - protocol: responses
+              version: 2.0.0
+    promotion-policy-experiment:
+        project: ./agent
+        host: azure.ai.agent
+        language: python
+        uses:
+            - ai-project
+        env:
+            AZURE_AI_MODEL_DEPLOYMENT_NAME: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+            OPTIMIZATION_LOCAL_DIR: .reviewed_configs
+        codeConfiguration:
+            dependencyResolution: remote_build
+            entryPoint: reviewed.py
+            runtime: python_3_13
+        container:
+            resources:
+                cpu: "1"
+                memory: 2Gi
+        description: Reviewed optimizer candidate; weak baseline remains pinned to version 1.
+        displayName: Contoso Promotion Policy Experiment
+        kind: hosted
+        name: promotion-policy-experiment
+        protocols:
+            - protocol: responses
+              version: 2.0.0
+infra:
+    provider: microsoft.foundry
